@@ -1,0 +1,24 @@
+[X] Make skelaton
+[X] Figure out what apps and tools i need
+
+
+# https://itsfoss.com/things-to-do-after-installing-fedora/
+[X] Configure DNF
+[X] Update system
+[X] Enable RPM Fusion
+[X] Install apps and tools
+    [X] Zed
+    [X] Golang
+    [X] Docker
+    [X] Docker Compose
+    [X] Tmux
+    [X] git
+    [X] htop
+    [X] Wireguard-tools
+    [X] Ansible
+    [X] ShellCheck / Shellharden
+    [X] uv
+    [X] Bat
+    [X] tldr / tlrc
+    [X] Discord
+    [-] Spotify
