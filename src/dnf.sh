@@ -43,8 +43,5 @@ function dnf_update() {
 
 function dnf_install() {
     args=("${@}")
-    for pkg in "${args[@]}"; do
-        log info "Installing ${pkg} from dnf"
-        sudo dnf install -y "${pkg}"
-    done
+    sudo dnf install -y "${args[@]}"
 }
