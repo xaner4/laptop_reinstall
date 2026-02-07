@@ -24,6 +24,8 @@ dnf_pkg=(
     containerd.io
     docker-buildx-plugin
     docker-compose-plugin
+    gcc
+    make
 )
 
 uv_pkg=(
