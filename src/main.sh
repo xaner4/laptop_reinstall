@@ -25,6 +25,7 @@ function main() {
 
     update_version_tags "${gh_pkg[@]}"
     yaak_install
+    golangci_lint_install
 }
 
 main

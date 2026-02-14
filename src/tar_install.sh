@@ -66,3 +66,8 @@ function yaak_install() {
     download ${yaak_download_url}
     sudo dnf install -y "${assets}/yaak-${yaak_version}-1.${hardware}.rpm"
 }
+
+function golangci_lint_install() {
+    download ${golangci_lint_download_url}
+    sudo dnf install -y "${assets}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
+}

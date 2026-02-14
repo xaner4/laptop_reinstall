@@ -32,6 +32,7 @@ uv_pkg=(
 
 gh_pkg=(
     yaak
+    golangci_lint
 )
 
 os="$(uname)"
@@ -40,9 +41,13 @@ declare -A hardware_map
 hardware_map["x86_64"]="amd64"
 hardware_map["arm64"]="arm64"
 
-export yaak_version="2026.1.2"
+export yaak_version="2026.2.0"
 export yaak_version_page="mountain-loop/yaak"
-export yaak_download_url="https://github.com/mountain-loop/yaak/releases/download/v${yaak_version}/yaak-${yaak_version}-1.${hardware}.rpm"
+export yaak_download_url="https://github.com/${yaak_version_page}/releases/download/v${yaak_version}/yaak-${yaak_version}-1.${hardware}.rpm"
+
+export golangci_lint_version="2.9.0"
+export golangci_lint_version_page="golangci/golangci-lint"
+export golangci_lint_download_url="https://github.com/${golangci_lint_version_page}/releases/download/v${golangci_lint_version}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
 
 function update_version_tags() {
     args=("${@}")
