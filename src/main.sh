@@ -2,11 +2,11 @@
 
 basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pwd)"
 source "${basedir}/log.sh"
-source "${basedir}/software_info.sh"
-source "${basedir}/tar_install.sh"
 source "${basedir}/dnf.sh"
 source "${basedir}/pip.sh"
-source "${basedir}/curl.sh"
+source "${basedir}/curl2sh.sh"
+source "${basedir}/software_info.sh"
+source "${basedir}/tar_install.sh"
 
 function main() {
     dnf_config
@@ -26,6 +26,7 @@ function main() {
     update_version_tags "${gh_pkg[@]}"
     yaak_install
     golangci_lint_install
+    sqlc_install
 }
 
 main

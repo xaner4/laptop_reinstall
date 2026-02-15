@@ -4,9 +4,6 @@ basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pw
 source "${basedir}/log.sh"
 source "${basedir}/software_info.sh"
 
-assets="${basedir}/assets"
-bin="${basedir}/bin"
-
 function download() {
     # download <url>
     if [[ -z "$(command -v wget)" ]];then
@@ -31,7 +28,7 @@ function download() {
 }
 
 function unpack() {
-    # unpack <download_url> <sublevel> <files>
+    # unpack <download_url> <sublevel> <files...>
     archive="${assets}/$(basename $1)"
     sublevel="${2}"
     files="${@:3}"
@@ -63,11 +60,17 @@ function unpack() {
 }
 
 function yaak_install() {
-    download ${yaak_download_url}
+    download "${yaak_download_url}"
     sudo dnf install -y "${assets}/yaak-${yaak_version}-1.${hardware}.rpm"
 }
 
 function golangci_lint_install() {
-    download ${golangci_lint_download_url}
+    download "${golangci_lint_download_url}"
     sudo dnf install -y "${assets}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
+}
+
+function sqlc_install() {
+    download "${sqlc_download_url}"
+    unpack "${sqlc_download_url}" 0 sqlc
+    mv "${bin}/sqlc" ~/.local/bin
 }
