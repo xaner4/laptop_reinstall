@@ -24,9 +24,11 @@ function main() {
     fi
 
     update_version_tags "${gh_pkg[@]}"
+    source "${basedir}/software_info.sh"
     yaak_install
     golangci_lint_install
     sqlc_install
+    go_migrate_install
 }
 
 main

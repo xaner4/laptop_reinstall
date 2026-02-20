@@ -3,10 +3,6 @@
 basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pwd)"
 source "${basedir}/log.sh"
 
-temp=$(mktemp -d)
-assets="${temp}/assets"
-bin="${temp}/bin"
-
 dnf_pkg=(
     jq
     yq
@@ -39,6 +35,7 @@ uv_pkg=(
 gh_pkg=(
     yaak
     golangci_lint
+    go_migrate
     sqlc
 )
 
@@ -48,17 +45,22 @@ declare -A hardware_map
 hardware_map["x86_64"]="amd64"
 hardware_map["arm64"]="arm64"
 
-export yaak_version="2026.2.1"
+export yaak_version="2026.2.4"
 export yaak_version_page="mountain-loop/yaak"
 export yaak_download_url="https://github.com/${yaak_version_page}/releases/download/v${yaak_version}/yaak-${yaak_version}-1.${hardware}.rpm"
 
-export golangci_lint_version="2.9.0"
+export golangci_lint_version="2.10.1"
 export golangci_lint_version_page="golangci/golangci-lint"
 export golangci_lint_download_url="https://github.com/${golangci_lint_version_page}/releases/download/v${golangci_lint_version}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
 
 export sqlc_version="1.30.0"
 export sqlc_version_page="sqlc-dev/sqlc"
 export sqlc_download_url="https://github.com/${sqlc_version_page}/releases/download/v${sqlc_version}/sqlc_${sqlc_version}_${os,,}_${hardware_map[${hardware}]}.tar.gz"
+
+export go_migrate_version="4.19.1"
+export go_migrate_version_page="golang-migrate/migrate"
+export go_migrate_download_url="https://github.com/${go_migrate_version_page}/releases/download/v${go_migrate_version}/migrate.${os,,}-${hardware_map[${hardware}]}.tar.gz"
+
 
 function update_version_tags() {
     args=("${@}")
@@ -111,12 +113,3 @@ function update_version() {
     fi
     log notice "${software_name} has been update to version ${latest} from ${current_version}"
 }
-
-
-if [[ ! -f "${assets}" ]]; then
-    mkdir -pv "${assets}"
-fi
-
-if [[ ! -f "${bin}" ]]; then
-    mkdir -pv "${bin}"
-fi

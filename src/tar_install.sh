@@ -4,6 +4,18 @@ basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pw
 source "${basedir}/log.sh"
 source "${basedir}/software_info.sh"
 
+temp=$(mktemp -d)
+assets="${temp}/assets"
+bin="${temp}/bin"
+
+if [[ ! -f "${assets}" ]]; then
+    mkdir -pv "${assets}"
+fi
+
+if [[ ! -f "${bin}" ]]; then
+    mkdir -pv "${bin}"
+fi
+
 function download() {
     # download <url>
     if [[ -z "$(command -v wget)" ]];then
@@ -73,4 +85,10 @@ function sqlc_install() {
     download "${sqlc_download_url}"
     unpack "${sqlc_download_url}" 0 sqlc
     mv "${bin}/sqlc" ~/.local/bin
+}
+
+function go_migrate_install() {
+    download "${go_migrate_download_url}"
+    unpack "${go_migrate_download_url}" 0 migrate
+    mv  "${bin}/migrate" "${HOME}/.local/bin/go-migrate"
 }
