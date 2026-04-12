@@ -57,6 +57,10 @@ function unpack() {
             tar --strip-components="${sublevel}" -xzf "${archive}" -C "${bin}" "${files}" --warning=no-unknown-keyword
             rc="${?}"
         ;;
+        *.zip)
+            unzip -o "${archive}" "${files}" -d "${bin}"
+            rc="${?}"
+        ;;
         *)
             log error "Not an know archive format"
             return
@@ -84,11 +88,20 @@ function golangci_lint_install() {
 function sqlc_install() {
     download "${sqlc_download_url}"
     unpack "${sqlc_download_url}" 0 sqlc
-    mv "${bin}/sqlc" ~/.local/bin
+    mv "${bin}/sqlc" "${HOME}/.local/bin/"
 }
 
 function go_migrate_install() {
     download "${go_migrate_download_url}"
     unpack "${go_migrate_download_url}" 0 migrate
     mv  "${bin}/migrate" "${HOME}/.local/bin/go-migrate"
+}
+
+function rustscan_install() {
+    tararchive="x86_64-linux-rustscan.tar.gz"
+    download "${rustscan_download_url}"
+    unpack "${rustscan_download_url}" 0 "${tararchive}"
+    mv "${bin}/${tararchive}" "${assets}"
+    unpack "${tararchive}" 0 rustscan
+    mv "${bin}/rustscan" "${HOME}/.local/bin/"
 }

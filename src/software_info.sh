@@ -15,6 +15,7 @@ dnf_pkg=(
     ripgrep
     wireguard-tools
     sqlitebrowser
+    sqlite3
     shellcheck
     tlp
     bat
@@ -37,6 +38,7 @@ gh_pkg=(
     golangci_lint
     go_migrate
     sqlc
+    rustscan
 )
 
 os="$(uname)"
@@ -45,11 +47,11 @@ declare -A hardware_map
 hardware_map["x86_64"]="amd64"
 hardware_map["arm64"]="arm64"
 
-export yaak_version="2026.2.4"
+export yaak_version="2026.3.1"
 export yaak_version_page="mountain-loop/yaak"
 export yaak_download_url="https://github.com/${yaak_version_page}/releases/download/v${yaak_version}/yaak-${yaak_version}-1.${hardware}.rpm"
 
-export golangci_lint_version="2.10.1"
+export golangci_lint_version="2.11.4"
 export golangci_lint_version_page="golangci/golangci-lint"
 export golangci_lint_download_url="https://github.com/${golangci_lint_version_page}/releases/download/v${golangci_lint_version}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
 
@@ -61,6 +63,9 @@ export go_migrate_version="4.19.1"
 export go_migrate_version_page="golang-migrate/migrate"
 export go_migrate_download_url="https://github.com/${go_migrate_version_page}/releases/download/v${go_migrate_version}/migrate.${os,,}-${hardware_map[${hardware}]}.tar.gz"
 
+export rustscan_version="2.4.1"
+export rustscan_version_page="bee-san/RustScan"
+export rustscan_download_url="https://github.com/${rustscan_version_page}/releases/download/${rustscan_version}/${hardware}-${os,,}-rustscan.tar.gz.zip"
 
 function update_version_tags() {
     args=("${@}")
