@@ -6,26 +6,28 @@ source "${basedir}/log.sh"
 dnf_pkg=(
     jq
     yq
-    tmux
+    bat
     git
+    gcc
+    make
+    tmux
     htop
     curl
     wget
     tldr
     ripgrep
-    wireguard-tools
-    sqlitebrowser
     sqlite3
-    shellcheck
-    bat
     discord
+    emacs-nox
+    shellcheck
+    vim-enhanced
+    sqlitebrowser
+    wireguard-tools
     docker-ce
     docker-ce-cli
     containerd.io
     docker-buildx-plugin
     docker-compose-plugin
-    gcc
-    make
 )
 
 uv_pkg=(
