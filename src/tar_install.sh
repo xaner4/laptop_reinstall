@@ -82,7 +82,8 @@ function yaak_install() {
 
 function golangci_lint_install() {
     download "${golangci_lint_download_url}"
-    sudo dnf install -y "${assets}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
+    unpack "${assets}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.tar.gz" 0 golangci-lint
+    mv  "${bin}/migrate" "${HOME}/.local/bin/go-migrate"
 }
 
 function sqlc_install() {

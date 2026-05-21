@@ -17,7 +17,6 @@ dnf_pkg=(
     sqlitebrowser
     sqlite3
     shellcheck
-    tlp
     bat
     discord
     docker-ce
@@ -53,7 +52,7 @@ export yaak_download_url="https://github.com/${yaak_version_page}/releases/downl
 
 export golangci_lint_version="2.11.4"
 export golangci_lint_version_page="golangci/golangci-lint"
-export golangci_lint_download_url="https://github.com/${golangci_lint_version_page}/releases/download/v${golangci_lint_version}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.rpm"
+export golangci_lint_download_url="https://github.com/${golangci_lint_version_page}/releases/download/v${golangci_lint_version}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.tar.gz"
 
 export sqlc_version="1.30.0"
 export sqlc_version_page="sqlc-dev/sqlc"
