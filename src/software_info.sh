@@ -15,6 +15,7 @@ dnf_pkg=(
     curl
     wget
     tldr
+    tree
     ripgrep
     sqlite3
     discord
