@@ -38,7 +38,7 @@ function main() {
 function pre_install() {
     if [[ ! -d "${localbin}" ]]; then
         mkdir -p "${localbin}"
-        chown -Rv "${USERNAME}:${USERNAME}"
+        chown -Rv "${USERNAME}:${USERNAME}" "${localbin}"
     fi
 }
 
