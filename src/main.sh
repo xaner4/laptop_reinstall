@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pwd)"
+localbin="${HOME}/.local/bin"
 source "${basedir}/log.sh"
 source "${basedir}/dnf.sh"
 source "${basedir}/pip.sh"
@@ -9,6 +10,8 @@ source "${basedir}/software_info.sh"
 source "${basedir}/tar_install.sh"
 
 function main() {
+    pre_install
+
     dnf_config
     dnf_rpmfusion
     dnf_dockerrepo
@@ -30,6 +33,12 @@ function main() {
     sqlc_install
     go_migrate_install
     rustscan_install
+}
+
+function pre_install() {
+    if [[ -d "${localbin}" ]]; then
+        mkdir -p "${localbin}"
+    fi
 }
 
 main

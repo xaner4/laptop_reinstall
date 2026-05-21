@@ -83,19 +83,19 @@ function yaak_install() {
 function golangci_lint_install() {
     download "${golangci_lint_download_url}"
     unpack "${assets}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.tar.gz" 1 "golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}/golangci-lint"
-    mv  "${bin}/golangci-lint" "${HOME}/.local/bin/go-lint"
+    mv  "${bin}/golangci-lint" "${localbin}/go-lint"
 }
 
 function sqlc_install() {
     download "${sqlc_download_url}"
     unpack "${sqlc_download_url}" 0 sqlc
-    mv "${bin}/sqlc" "${HOME}/.local/bin/"
+    mv "${bin}/sqlc" "${localbin}/"
 }
 
 function go_migrate_install() {
     download "${go_migrate_download_url}"
     unpack "${go_migrate_download_url}" 0 migrate
-    mv  "${bin}/migrate" "${HOME}/.local/bin/go-migrate"
+    mv  "${bin}/migrate" "${localbin}/go-migrate"
 }
 
 function rustscan_install() {
@@ -104,5 +104,5 @@ function rustscan_install() {
     unpack "${rustscan_download_url}" 0 "${tararchive}"
     mv "${bin}/${tararchive}" "${assets}"
     unpack "${tararchive}" 0 rustscan
-    mv "${bin}/rustscan" "${HOME}/.local/bin/"
+    mv "${bin}/rustscan" "${localbin}/"
 }
