@@ -2,6 +2,7 @@
 
 basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pwd)"
 localbin="${HOME}/.local/bin"
+
 source "${basedir}/log.sh"
 source "${basedir}/dnf.sh"
 source "${basedir}/pip.sh"
@@ -41,5 +42,11 @@ function pre_install() {
         chown -Rv "${USERNAME}:${USERNAME}" "${localbin}"
     fi
 }
+
+
+if (( ${UID} == 0 )); then
+    log error "Do not start as root or with sudo"
+    exit 1
+fi
 
 main
