@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-basedir="$(cd "$(dirname $(realpath "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pwd)"
+basedir="$(cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")" >/dev/null 2>&1 && pwd)"
 localbin="${HOME}/.local/bin"
 
 source "${basedir}/log.sh"
