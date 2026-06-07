@@ -9,6 +9,7 @@ dnf_pkg=(
     bat
     git
     gcc
+    vlc
     make
     tmux
     htop
@@ -20,6 +21,7 @@ dnf_pkg=(
     ripgrep
     sqlite3
     discord
+    seahorse
     emacs-nox
     shellcheck
     vim-enhanced
@@ -54,7 +56,7 @@ export yaak_version="2026.4.0"
 export yaak_version_page="mountain-loop/yaak"
 export yaak_download_url="https://github.com/${yaak_version_page}/releases/download/v${yaak_version}/yaak-${yaak_version}-1.${hardware}.rpm"
 
-export golangci_lint_version="2.11.4"
+export golangci_lint_version="2.12.2"
 export golangci_lint_version_page="golangci/golangci-lint"
 export golangci_lint_download_url="https://github.com/${golangci_lint_version_page}/releases/download/v${golangci_lint_version}/golangci-lint-${golangci_lint_version}-${os,,}-${hardware_map[${hardware}]}.tar.gz"
 
